@@ -126,7 +126,7 @@ const Product = () => {
   const ShowSimilarProduct = () => {
     return (
       <>
-        <div className="py-4 my-4">
+        <div className="py-4 my-4" >
           <div className="d-flex">
             {similarProducts.map((item) => {
               return (

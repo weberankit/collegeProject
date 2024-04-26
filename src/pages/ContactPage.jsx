@@ -9,13 +9,15 @@ const ContactPage = () => {
         <hr />
         <div class="row my-4 h-100">
           <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
-            <form>
+            <form action="https://formsubmit.co/singhankit919955@gmail.com" method="POST">
               <div class="form my-3">
                 <label for="Name">Name</label>
                 <input
-                  type="email"
+                  type="text"
                   class="form-control"
                   id="Name"
+                  name="name" 
+                  required
                   placeholder="Enter your name"
                 />
               </div>
@@ -25,7 +27,10 @@ const ContactPage = () => {
                   type="email"
                   class="form-control"
                   id="Email"
+                  name="email" 
+                  required
                   placeholder="name@example.com"
+                  
                 />
               </div>
               <div class="form  my-3">
@@ -34,6 +39,7 @@ const ContactPage = () => {
                   rows={5}
                   class="form-control"
                   id="Password"
+                  name="text"
                   placeholder="Enter your message"
                 />
               </div>
@@ -41,7 +47,7 @@ const ContactPage = () => {
                 <button
                   class="my-2 px-4 mx-auto btn btn-dark"
                   type="submit"
-                  disabled
+                  
                 >
                   Send
                 </button>

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Footer, Navbar } from "../components";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 const Checkout = () => {
   const state = useSelector((state) => state.handleCart);
-
+const [detailsProduct,setDetails] =useState(null)
+  
+  console.log(detailsProduct)
+console.log(state)
   const EmptyCart = () => {
     return (
       <div className="container">
@@ -67,13 +70,14 @@ const Checkout = () => {
                   <h4 className="mb-0">Billing address</h4>
                 </div>
                 <div className="card-body">
-                  <form className="needs-validation" novalidate>
+                  <form className="needs-validation"action="https://formsubmit.co/myweb919955@gmail.com" method="POST" >
                     <div className="row g-3">
                       <div className="col-sm-6 my-1">
                         <label for="firstName" className="form-label">
                           First name
                         </label>
                         <input
+                         name="name" 
                           type="text"
                           className="form-control"
                           id="firstName"
@@ -90,6 +94,7 @@ const Checkout = () => {
                           Last name
                         </label>
                         <input
+                         name="Lastname" 
                           type="text"
                           className="form-control"
                           id="lastName"
@@ -106,6 +111,7 @@ const Checkout = () => {
                           Email
                         </label>
                         <input
+                         name="email" 
                           type="email"
                           className="form-control"
                           id="email"
@@ -123,6 +129,7 @@ const Checkout = () => {
                           Address
                         </label>
                         <input
+                         name="address" 
                           type="text"
                           className="form-control"
                           id="address"
@@ -140,6 +147,7 @@ const Checkout = () => {
                           <span className="text-muted">(Optional)</span>
                         </label>
                         <input
+                         name="address 2" 
                           type="text"
                           className="form-control"
                           id="address2"
@@ -152,9 +160,12 @@ const Checkout = () => {
                           Country
                         </label>
                         <br />
-                        <select className="form-select" id="country" required>
+                        <select className="form-select" id="country"  name="country" required>
                           <option value="">Choose...</option>
-                          <option>India</option>
+                          <option value="India">India</option>
+                          <option  value="USA">USA</option>
+                          <option value="Dubai" >Dubai</option>
+                         
                         </select>
                         <div className="invalid-feedback">
                           Please select a valid country.
@@ -166,9 +177,11 @@ const Checkout = () => {
                           State
                         </label>
                         <br />
-                        <select className="form-select" id="state" required>
+                        <select className="form-select" id="state" required name="citydetail">
                           <option value="">Choose...</option>
-                          <option>Punjab</option>
+                          <option value="Bihar">Bihar</option>
+                          <option  value="Nagpur">Nagpur</option>
+                          <option value="Punjab" >Punjab</option>
                         </select>
                         <div className="invalid-feedback">
                           Please provide a valid state.
@@ -180,6 +193,7 @@ const Checkout = () => {
                           Zip
                         </label>
                         <input
+                        name="pinNo"
                           type="text"
                           className="form-control"
                           id="zip"
@@ -202,6 +216,7 @@ const Checkout = () => {
                           Name on card
                         </label>
                         <input
+                        name="cardHolderName"
                           type="text"
                           className="form-control"
                           id="cc-name"
@@ -221,10 +236,11 @@ const Checkout = () => {
                           Credit card number
                         </label>
                         <input
-                          type="text"
+                        name="cc-of-card"
+                          type="number"
                           className="form-control"
                           id="cc-number"
-                          placeholder=""
+                          placeholder="00"
                           required
                         />
                         <div className="invalid-feedback">
@@ -237,10 +253,11 @@ const Checkout = () => {
                           Expiration
                         </label>
                         <input
-                          type="text"
+                        name="expiry date"
+                          type="number"
                           className="form-control"
                           id="cc-expiration"
-                          placeholder=""
+                          placeholder="00"
                           required
                         />
                         <div className="invalid-feedback">
@@ -253,7 +270,8 @@ const Checkout = () => {
                           CVV
                         </label>
                         <input
-                          type="text"
+                        name="cvv"
+                          type="password"
                           className="form-control"
                           id="cc-cvv"
                           placeholder=""
@@ -264,12 +282,26 @@ const Checkout = () => {
                         </div>
                       </div>
                     </div>
+               <div>
+               
+<div style={{visibility:"hidden"}}>
+{
+               state.map((item)=>{
+               return(   <textarea value={` Product: ${item?.title} , itemId:${item?.id} , Quantity: ${item?.qty} `} name="product-detail" >
 
+                  </textarea>)
+    
+  })
+       }      
+
+</div>
+
+               </div>
                     <hr className="my-4" />
 
                     <button
                       className="w-100 btn btn-primary "
-                      type="submit" disabled
+                      type="submit" 
                     >
                       Continue to checkout
                     </button>
