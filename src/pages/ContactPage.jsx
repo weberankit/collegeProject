@@ -9,7 +9,7 @@ const ContactPage = () => {
         <hr />
         <div class="row my-4 h-100">
           <div className="col-md-4 col-lg-4 col-sm-8 mx-auto">
-            <form action="https://formsubmit.co/singhankit919955@gmail.com" method="POST">
+            <form action="https://formsubmit.co/weblanceank@gmail.com" method="POST">
               <div class="form my-3">
                 <label for="Name">Name</label>
                 <input
