@@ -16,7 +16,7 @@ function handlePay(){
   setTimeout(()=>{
   window.open('/payment', '_blank');
 
-  },8000)
+  },2000)
 }
 
 
