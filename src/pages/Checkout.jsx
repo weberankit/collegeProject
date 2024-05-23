@@ -13,10 +13,10 @@ function handlePay(){
   const checking=document.querySelector(".needs-validation")
   //console.log()
   if(!checking.checkValidity()) return
-  setTimeout(()=>{
+ 
   window.open('/payment', '_blank');
 
-  },2000)
+ 
 }
 
 
