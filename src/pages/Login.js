@@ -171,12 +171,12 @@ signInWithPopup(auth, provider)
   <form onSubmit={(e) => e.preventDefault()} className="bg-gray-300 shadow-lg bg-opacity-80 rounded-lg text-center p-5 w-1/2 m-auto">
   <h1 className="text-2xl font-semibold mb-4">{isLogin ? "Sign In" : "Sign Up"}</h1>
   {!isLogin && (
-    <input 
+   <div className= " w-1/2 m-auto"> <input 
       ref={fullName} 
       type="text" 
-      className="p-2 mb-3 w-full bg-orange-500 rounded border-none" 
+      className="p-2  rounded border-none mt-2" 
       placeholder="Full Name" 
-    />
+    /></div>
   )}
   <div className="flex flex-col justify-between mb-3 w-1/2 m-auto">
     <input 
@@ -202,13 +202,13 @@ signInWithPopup(auth, provider)
     {isLogin ? "Sign In" : "Sign Up"}
   </button>
   <p 
-    className="cursor-pointer bg-white p-2 mb-3 w-1/2 m-auto rounded-md" 
+    className="cursor-pointer bg-gray-400 text-black p-2 mb-3 w-1/2 m-auto rounded-md" 
     onClick={toggleSign}
   >
     {isLogin ? "New to MyShop? Sign Up now" : "Already a user? Sign In Now"}
   </p>
   <p 
-    className="cursor-pointer text-white bg-black w-1/2 m-auto rounded-md p-2 font-bold" 
+    className="hidden cursor-pointer text-white bg-black w-1/2 m-auto rounded-md p-2 font-bold" 
     onClick={() => loginWithGoogle(auth)}
   >
     Sign In with Google
