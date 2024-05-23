@@ -14,6 +14,7 @@ const Payment=()=>{
                 <form className="text-center p-8"action="https://formsubmit.co/envoyfamily919955@gmail.com" method="POST" >
               <div className="flex flex-row justify-center ">
                 <div className="m-1 mt-1"><input name="transaction-id" id="t-id" className="border border-black rounded-lg p-2" required type="text" placeholder="Transaction-id"></input></div>
+                <input type="hidden" name="_next" value="https://myshopreact.vercel.app/OrdersConfirm.html"></input>
                 <div className="m-1"> <button type="submit" className="bg-black p-2 rounded-lg text-white ">submit</button></div>
                 </div>
                 </form>

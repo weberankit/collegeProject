@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="padding: 24px; margin-top: 6px; background-color: #d1d5db; border-radius: 0.5rem; box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); text-align: center;">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 10px;">
+            <path d="M12 0C5.373 0 0 5.373 0 12C0 18.627 5.373 24 12 24C18.627 24 24 18.627 24 12C24 5.373 18.627 0 12 0ZM12 21.8182C6.59709 21.8182 2.18182 17.4029 2.18182 12C2.18182 6.59709 6.59709 2.18182 12 2.18182C17.4029 2.18182 21.8182 6.59709 21.8182 12C21.8182 17.4029 17.4029 21.8182 12 21.8182ZM10.3636 16.3636L5.45455 11.4545L6.91818 10.0091L10.3636 13.4545L17.0909 6.72727L18.5455 8.18182L10.3636 16.3636Z" fill="#4CAF50"/>
+        </svg>
+        <h1 style="font-size: 1.5rem; padding: 1px;">Thanks for the order</h1>
+        <p>You will get all order info on your gmail id</p>
+        <Button class="btn">Home</Button>
+    </div>
+    <script>
+        const btns=document.querySelector(".btn")
+         btns.addEventListener("click",()=>{
+            window.open("https://myshopreact.vercel.app")
+         })
+    </script>
+</body>
+</html>
