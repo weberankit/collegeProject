@@ -64,11 +64,11 @@ const Product = () => {
   const ShowProduct = () => {
     return (
       <>
-        <div className="container my-5 py-2">
+        <div className="container my-5 py-2 ">
           <div className="row">
             <div className="col-md-6 col-sm-12 py-3">
               <img
-                className="img-fluid"
+                className="img-fluid  w-60 m-auto"
                 src={product.image}
                 alt={product.title}
                 width="400px"
@@ -124,19 +124,26 @@ const Product = () => {
   };
 
   const ShowSimilarProduct = () => {
+    console.log(id,"this os id",typeof(id))
     return (
       <>
         <div className="py-4 my-4" >
           <div className="d-flex">
             {similarProducts.map((item) => {
+              console.log(item.id,"this is all id",typeof(item.id))
+
+             
               return (
                 <div key={item.id} className="card mx-4 text-center">
-                  <img
-                    className="card-img-top p-3"
+  {
+                  
+
+       item.id !== Number(id) &&  <>          <img
+                    className="card-img-top p-3 w-48 m-auto"
                     src={item.image}
                     alt="Card"
-                    height={300}
-                    width={300}
+                    height={100}
+                    width={100}
                   />
                   <div className="card-body">
                     <h5 className="card-title">
@@ -160,6 +167,8 @@ const Product = () => {
                       Add to Cart
                     </button>
                   </div>
+            </>
+            }
                 </div>
               );
             })}

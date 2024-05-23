@@ -6,7 +6,6 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import { Link } from "react-router-dom";
-
 const Products = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
@@ -85,13 +84,15 @@ const Products = () => {
         {filter.map((product) => {
           return (
             <div id={product.id} key={product.id} className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4">
-              <div className="card text-center h-100" key={product.id}>
+              <div className="card text-center h-100 " key={product.id}>
+              <Link to={"/product/" + product.id} >
                 <img
-                  className="card-img-top p-3"
+                  className="card-img-top p-3 w-60  m-auto"
                   src={product.image}
                   alt="Card"
                   height={300}
                 />
+                </Link>
                 <div className="card-body">
                   <h5 className="card-title">
                     {product.title.substring(0, 12)}...

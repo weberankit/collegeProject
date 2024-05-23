@@ -40,6 +40,8 @@ setErrorMsg(message)
 if(message)return
 //authentication
 if(!isLogin){
+  setErrorMsg("signin started")
+
 //sign up
 createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
@@ -57,6 +59,8 @@ createUserWithEmailAndPassword(auth, email.current.value, password.current.value
 const {uid ,email,displayName,photoURL} = auth.currentUser;
 //dispatch(addUser( {uid:uid ,email:email,displayName:displayName , photoURL:photoURL}))
 setUserData({uid:uid ,email:email,displayName:displayName , photoURL:photoURL})
+setErrorMsg(null)
+
   }).catch((error) => {
     // An error occurred
     // ...
@@ -77,6 +81,7 @@ setUserData({uid:uid ,email:email,displayName:displayName , photoURL:photoURL})
 //sign in
 signInWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
+
     // Signed in 
     //const user = userCredential.user;
    // console.log(user)
@@ -126,12 +131,13 @@ setUserData(null)
 
 
 function loginWithGoogle(auth){
-  
+  setErrorMsg("signin startd")
   const provider = new GoogleAuthProvider();
 signInWithPopup(auth, provider)
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
+    setErrorMsg(null)
 
   }).catch((error) => {
    
@@ -147,28 +153,71 @@ signInWithPopup(auth, provider)
     return (
       <>
         <Navbar data={userData}/>
+        <div className="mt-5">
         {userData ? (
-          <div style={{ textAlign: "center", height: "300px", paddingTop: "3em" }}>
-            <div style={{ fontSize: "16px" }}>
-              <p style={{ padding: ".5em" }}> Hi {userData?.displayName}</p> 
-              <p>{userData?.email}</p> 
-            </div>
-            <button style={{ marginTop: "1em", padding: "0.5em 1em", backgroundColor: "blue", color: "white", borderRadius: "5px", border: "none", cursor: "pointer" }} onClick={() => handlesignout()}>LogOut</button>
-          </div>
-        ) : (
-          <form onSubmit={(e) => e.preventDefault()} style={{ backgroundColor: "rgba(0,0,0,0.8)", borderRadius: "10px", textAlign: "center", padding: "20px" }}>
-            <h1>{isLogin ? "Sign In" : "Sign Up"}</h1>
-            {!isLogin && <input ref={fullName} type="text" style={{ padding: "10px", marginBottom: "10px", width: "100%", backgroundColor: "orange", borderRadius: "5px", border: "none" }} placeholder="Full Name"/>}
-            <div style={{ display: "flex", flexDirection: "row" }}>
-              <input ref={email} type="text" style={{ padding: "10px", marginBottom: "10px", width: "48%", marginRight: "2%", backgroundColor: "orange", borderRadius: "5px", border: "none" }} placeholder="Email Address"/>
-              <input ref={password} type="password" style={{ padding: "10px", marginBottom: "10px", width: "48%", backgroundColor: "orange", borderRadius: "5px", border: "none" }} placeholder="Password (@Weber12)"/>
-            </div>
-            <p style={{ color: "red", fontWeight: "bold" }}>{errorMsg}</p>
-            <button style={{ padding: "10px", marginTop: "10px",marginBottom:"9px", width: "100%", backgroundColor: "orange", borderRadius: "5px", border: "none", cursor: "pointer" }} onClick={handleCheckvalidate}>{isLogin ? "Sign In" : "Sign Up"}</button>
-            <p style={{ cursor: "pointer",backgroundColor:"white",padding:"10px" }} onClick={toggleSign}>{isLogin ? "New to MyShop ? Sign Up now" : "Already user ? Sign In Now"}</p>
-            <p style={{ color: "black", backgroundColor: "red", margin: "10px", fontWeight: "bold", padding: "10px", cursor: "pointer" }} onClick={() => loginWithGoogle(auth)}>signIn with google</p>
-          </form>
+  <div className="flex flex-col items-center justify-center h-72 pt-12 text-center">
+    <div className="text-lg">
+      <p className="py-2">Hi {userData?.displayName}</p>
+      <p>{userData?.email}</p>
+    </div>
+    <button 
+      className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+      onClick={() => handlesignout()}
+    >
+      LogOut
+    </button>
+  </div>
+): (
+  <form onSubmit={(e) => e.preventDefault()} className="bg-gray-300 shadow-lg bg-opacity-80 rounded-lg text-center p-5 w-1/2 m-auto">
+  <h1 className="text-2xl font-semibold mb-4">{isLogin ? "Sign In" : "Sign Up"}</h1>
+  {!isLogin && (
+    <input 
+      ref={fullName} 
+      type="text" 
+      className="p-2 mb-3 w-full bg-orange-500 rounded border-none" 
+      placeholder="Full Name" 
+    />
+  )}
+  <div className="flex flex-col justify-between mb-3 w-1/2 m-auto">
+    <input 
+      ref={email} 
+      type="text" 
+      className="p-2  rounded border-none mt-2" 
+      placeholder="Email Address" 
+   
+    />
+    <input 
+      ref={password} 
+      type="password" 
+      className="p-2 wrounded border-none mt-2 " 
+      placeholder="Password (@Weber12)" 
+      
+    />
+  </div>
+  <p className=" text-red-500 font-bold mb-3 ">{errorMsg}</p>
+  <button 
+    className="p-2  bg-black w-1/2 text-white rounded cursor-pointer mb-3" 
+    onClick={handleCheckvalidate}
+  >
+    {isLogin ? "Sign In" : "Sign Up"}
+  </button>
+  <p 
+    className="cursor-pointer bg-white p-2 mb-3 w-1/2 m-auto rounded-md" 
+    onClick={toggleSign}
+  >
+    {isLogin ? "New to MyShop? Sign Up now" : "Already a user? Sign In Now"}
+  </p>
+  <p 
+    className="cursor-pointer text-white bg-black w-1/2 m-auto rounded-md p-2 font-bold" 
+    onClick={() => loginWithGoogle(auth)}
+  >
+    Sign In with Google
+  </p>
+</form>
+
+  
         )}
+        </div>
         <Footer />
       </>
     );

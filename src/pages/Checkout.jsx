@@ -1,11 +1,27 @@
 import React, { useState } from "react";
 import { Footer, Navbar } from "../components";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import Payment from "../components/Payment";
 const Checkout = () => {
   const state = useSelector((state) => state.handleCart);
 const [detailsProduct,setDetails] =useState(null)
+  const navigate=useNavigate()
+
+
+function handlePay(){
+  const checking=document.querySelector(".needs-validation")
+  //console.log()
+  if(!checking.checkValidity()) return
   
+setTimeout(()=>{
+  navigate("/payment")
+},4000)
+}
+
+
+
+
   console.log(detailsProduct)
 console.log(state)
   const EmptyCart = () => {
@@ -208,9 +224,9 @@ console.log(state)
 
                     <hr className="my-4" />
 
-                    <h4 className="mb-3">Payment</h4>
+                    <h4 className="mb-3 hidden">Payment</h4>
 
-                    <div className="row gy-3">
+                    <div className="row gy-3 hidden">
                       <div className="col-md-6">
                         <label for="cc-name" className="form-label">
                           Name on card
@@ -221,7 +237,7 @@ console.log(state)
                           className="form-control"
                           id="cc-name"
                           placeholder=""
-                          required
+                         
                         />
                         <small className="text-muted">
                           Full name as displayed on card
@@ -241,7 +257,7 @@ console.log(state)
                           className="form-control"
                           id="cc-number"
                           placeholder="00"
-                          required
+                          
                         />
                         <div className="invalid-feedback">
                           Credit card number is required
@@ -258,7 +274,7 @@ console.log(state)
                           className="form-control"
                           id="cc-expiration"
                           placeholder="00"
-                          required
+                         
                         />
                         <div className="invalid-feedback">
                           Expiration date required
@@ -275,7 +291,7 @@ console.log(state)
                           className="form-control"
                           id="cc-cvv"
                           placeholder=""
-                          required
+                        
                         />
                         <div className="invalid-feedback">
                           Security code required
@@ -298,8 +314,9 @@ console.log(state)
 
                </div>
                     <hr className="my-4" />
-
+                  
                     <button
+                    onClick={handlePay}
                       className="w-100 btn btn-primary "
                       type="submit" 
                     >
