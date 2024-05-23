@@ -13,7 +13,7 @@ const Payment=()=>{
                 <div className=" m-2 p-4 text-center"><h2>After payment please provide your Transaction-id</h2></div>
                 <form className="text-center p-8"action="https://formsubmit.co/envoyfamily919955@gmail.com" method="POST" >
               <div className="flex flex-row justify-center ">
-                <div className="m-1 mt-1"><input className="border border-black rounded-lg p-2" required type="text" placeholder="Transaction-id"></input></div>
+                <div className="m-1 mt-1"><input id="t-id" className="border border-black rounded-lg p-2" required type="text" placeholder="Transaction-id"></input></div>
                 <div className="m-1"> <button type="submit" className="bg-black p-2 rounded-lg text-white ">submit</button></div>
                 </div>
                 </form>
