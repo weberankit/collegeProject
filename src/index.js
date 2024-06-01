@@ -9,7 +9,7 @@ import "./index.css"
 
 import { Home, Product, Products, AboutPage, ContactPage, Cart, Login, Register, Checkout, PageNotFound } from "./pages"
 import Payment from './components/Payment';
-
+import Order from './components/Order';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -25,7 +25,7 @@ root.render(
         <Route path="/register" element={<Register />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/payment" element={<Payment/>} />
-
+        <Route path="/order" element={<Order/>} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/product/*" element={<PageNotFound />} />
       </Routes>

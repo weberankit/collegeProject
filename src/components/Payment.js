@@ -1,6 +1,10 @@
 import qr from "./img/qr.jpeg"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux";
+
 const Payment=()=>{
+    const state = useSelector((state) => state.handleCart);
+console.log("state",state)
     return(
         <>
         <div><Link to={"/"}><button className="text-white bg-black p-2 m-1 rounded-lg">Back to Home</button></Link></div>

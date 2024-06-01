@@ -13,12 +13,21 @@
         <h1 style="font-size: 1.5rem; padding: 1px;">Thanks for the order</h1>
         <p>You will get all order info on your gmail id</p>
         <Button class="btn">Home</Button>
+        <Button class="btnOrder">check your order</Button>
     </div>
     <script>
         const btns=document.querySelector(".btn")
          btns.addEventListener("click",()=>{
             window.open("https://myshopreact.vercel.app")
          })
+
+         const btn=document.querySelector(".btnOrder")
+         btn.addEventListener("click",()=>{
+            window.open("https://myshopreact.vercel.app/order" , '_blank')
+         })
+
+
+
     </script>
 </body>
 </html>

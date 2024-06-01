@@ -27,6 +27,9 @@ const Navbar = ({data}) => {
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/contact">Contact</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/order">Order</NavLink>
+                        </li>
                     </ul>
                     <div className="buttons text-center " style={{display:"flex",flexDirection:"column"}}>
                     <div>

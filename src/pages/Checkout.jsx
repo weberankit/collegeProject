@@ -14,7 +14,7 @@ function handlePay(){
   //console.log()
   if(!checking.checkValidity()) return
  
-  window.open('/payment', '_blank');
+  //window.open('/payment', '_blank');
 
  
 }
@@ -24,6 +24,8 @@ function handlePay(){
 
   console.log(detailsProduct)
 console.log(state)
+localStorage.setItem("carts", JSON.stringify(state));
+
   const EmptyCart = () => {
     return (
       <div className="container">
@@ -44,6 +46,7 @@ console.log(state)
     let shipping = 30.0;
     let totalItems = 0;
     state.map((item) => {
+      console.log(item)
       return (subtotal += item.price * item.qty);
     });
 
@@ -87,6 +90,8 @@ console.log(state)
                 </div>
                 <div className="card-body">
                   <form className="needs-validation"action="https://formsubmit.co/envoyfamily919955@gmail.com" method="POST" >
+                  <input type="hidden" name="_next" value="https://myshopreact.vercel.app/payment"></input>
+
                     <div className="row g-3">
                       <div className="col-sm-6 my-1">
                         <label for="firstName" className="form-label">
