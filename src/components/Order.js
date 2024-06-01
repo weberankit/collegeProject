@@ -4,14 +4,17 @@ import { json } from "react-router-dom";
 
 const Order = () => {
     const cartItems =JSON.parse(localStorage.getItem("carts"))
+if(!cartItems){
+    <p style="font-weight: bold; text-align: center;">You have not ordered anything yet! Please order.</p>
 
+}
  
 
     return (
-        <div style={{ margin: '20px', fontFamily: 'Arial, sans-serif' }}>
+      <div style={{ margin: '20px', fontFamily: 'Arial, sans-serif' }}>
             <h2 style={{ textAlign: 'center', color: '#333', borderBottom: '2px solid #ccc', paddingBottom: '10px' }}>Your Order</h2>
             {cartItems.length === 0 ? (
-                <p style={{ textAlign: 'center', color: '#888' }}>No items in the cart</p>
+                <p style={{ textAlign: 'center', color: '#888' }}>please order</p>
             ) : (
                 cartItems.map((item) => (
                     <div key={item.id} className="cart-item" style={{ border: '1px solid #ddd', borderRadius: '5px', padding: '15px', margin: '10px 0', boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)' }}>
